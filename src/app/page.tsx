@@ -4,6 +4,9 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { stat } from "fs";
+import {Button} from "@/components/ui/button"
+import Feed from "@/app/components/Feed"
+
 
 export default function Home() {
   const router = useRouter(); // Initialize the router object
@@ -51,11 +54,28 @@ export default function Home() {
         </>
       ) : (
         <>
-          <p>Welcome, {session.user?.name}</p>
-          <button onClick={() => router.push("/CreatePrompt")}>
-            Create prompt
-          </button>
-          <button onClick={() => signOut()}>Sign out</button>
+      <div className="flex flex-col items-center justify-center gap-2 w-full h-screen">
+    <p className="font-medium text-xl">Welcome, {session.user?.name}</p>
+
+    <p className="font-bold text-1xl">
+        Start sharing your ideas with the world!
+    </p>
+    
+    <p className="font-bold text-2xl ml-4">
+        Create and share what matters.
+    </p>
+
+    <Button onClick={() => router.push("/CreatePrompt")}>Create Prompt</Button>
+
+    {/* Adjust Feed component styling */}
+    <div className="w-full flex justify-center mt-4">
+        <Feed />
+    </div>
+</div>
+
+    
+    
+         
         </>
       )}
     </div>

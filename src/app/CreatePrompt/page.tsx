@@ -3,6 +3,9 @@
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
+import {Textarea} from "@/components/ui/textarea"
+import {Button} from "@/components/ui/button"
+import Feed from "../components/Feed";
 
 const Page =() => {
   const { data: session } = useSession();
@@ -27,13 +30,13 @@ const Page =() => {
   };
 
   return session?.user ? (
-    <div>
-      <input
-        placeholder="Enter your prompt here"
-        value={userinput}
-        onChange={(e) => setuserinput(e.target.value)}
-      />
-      <button onClick={handlesubmit}>Push</button>
+    <div className="grid w-1/2 gap-2">
+    <Textarea placeholder="Type your message here." onChange={(e)=>setuserinput(e.target.value)}  />
+    <Button onClick={handlesubmit}>
+    Create Prompt
+    </Button>
+
+    <Feed/>
     </div>
   ) : (
     <div>NOT SIGNED IN USER</div>
