@@ -3,13 +3,17 @@ import { useRouter } from "next/navigation";
 import { signIn, signOut, useSession } from "next-auth/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { stat } from "fs";
 
 export default function Home() {
   const router = useRouter(); // Initialize the router object
 
-  const { data: session } = useSession();
+  const { data: session,status } = useSession();
+   
 
-  // console.log({ session });
+
+   if(status=="loading")
+    return <div>.....loading user</div>
 
   // const createUser = async () => {
   //   try {
@@ -34,6 +38,8 @@ export default function Home() {
   //     createUser(); // Call createUser only when session is available
   //   }
   // }, [session]);
+  
+  console.log({ session });
 
   return (
     <div>

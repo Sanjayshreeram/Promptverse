@@ -4,7 +4,7 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 
-const Page = () => {
+const Page =() => {
   const { data: session } = useSession();
   const [userinput, setuserinput] = useState<string>("");
 
