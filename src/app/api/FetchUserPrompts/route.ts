@@ -6,13 +6,26 @@ const Prisma=new PrismaClient();
 export async function POST(req: Request) {
     const { username } = await req.json();
 
-    const prompts = await Prisma.user.findFirst({
+
+    const user = await Prisma.user.findUnique({
+        where: { username },
+        select: { id: true }, // Only fetch the user ID
+      });
+
+    const prompts = await Prisma.prompt.findMany({
         where: {
-            username
+            userId: user?.id
         },
-        select: {
-            prompts: true
-        }
+       
+          
+                skip:0,
+                take:7,
+                orderBy:{
+                    id:"desc"
+                }
+
+            
+        
     });
 
     console.log(prompts);
@@ -21,3 +34,5 @@ export async function POST(req: Request) {
         data: prompts
     }));
 }
+
+

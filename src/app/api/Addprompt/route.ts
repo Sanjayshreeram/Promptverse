@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { NextRequest } from "next/server";
+import {toast,ToastContainer} from 'react-toastify';
 
 const prisma = new PrismaClient();
 
@@ -57,7 +58,7 @@ export async function POST(req: Request) {
         },
       });
     }
-
+     
     return new Response(
       JSON.stringify({ message: "Prompt updated successfully" }),
       { status: 200 }

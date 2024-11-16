@@ -45,7 +45,7 @@ export default function Home() {
   console.log({ session });
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center gap-2 w-full h-screen">
       {!session ? (
         <>
           <p>You are not signed in.</p>
@@ -56,6 +56,10 @@ export default function Home() {
         <>
       <div className="flex flex-col items-center justify-center gap-2 w-full h-screen">
     <p className="font-medium text-xl">Welcome, {session.user?.name}</p>
+
+    <Button>
+      Profile page
+    </Button>
 
     <p className="font-bold text-1xl">
         Start sharing your ideas with the world!
@@ -68,7 +72,7 @@ export default function Home() {
     <Button onClick={() => router.push("/CreatePrompt")}>Create Prompt</Button>
 
     {/* Adjust Feed component styling */}
-    <div className="w-full flex justify-center mt-4">
+    <div className="w-full h-screen flex justify-center mt-4">
         <Feed />
     </div>
 </div>

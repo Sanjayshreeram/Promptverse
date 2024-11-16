@@ -27,7 +27,7 @@ const navItems = [
 ]
 
 export default function Navbar() {
-  const [date, setDate] = React.useState<Date | undefined>(new Date())
+
   return (
     <nav className="bg-transparent flex items-center justify-center m-auto p-4">
       <NavigationMenu>
