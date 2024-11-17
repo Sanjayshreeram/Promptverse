@@ -15,6 +15,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { Calendar } from "@/components/ui/calendar"
+import { ModeToggle } from "@/app/components/ModeToggle"
 
 // Define the navigation items here
 const navItems = [
@@ -24,12 +25,14 @@ const navItems = [
   { title: "Server", href: "/server" },
   { title: "Client", href: "/client" },
   { title: "Extra", href: "/extra" },
+
 ]
 
 export default function Navbar() {
 
   return (
     <nav className="bg-transparent flex items-center justify-center m-auto p-4">
+      <ModeToggle/>
       <NavigationMenu>
         <NavigationMenuList className="flex justify-evenly text-2xl font-bold">
           {navItems.map((item) => (

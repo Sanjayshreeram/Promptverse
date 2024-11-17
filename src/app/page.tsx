@@ -45,7 +45,7 @@ export default function Home() {
   console.log({ session });
 
   return (
-    <div className="flex flex-col items-center justify-center gap-2 w-full h-screen">
+    <div className="flex flex-col items-center justify-center  w-full h-screen dark:bg-black">
       {!session ? (
         <>
           <p>You are not signed in.</p>
