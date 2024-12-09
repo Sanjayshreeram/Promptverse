@@ -31,8 +31,8 @@ const navItems = [
 export default function Navbar() {
 
   return (
-    <nav className="bg-transparent flex items-center justify-center m-auto p-4">
-      <ModeToggle/>
+    <nav className="bg-transparent w-1/2  flex items-center justify-center m-auto p-4">
+         <ModeToggle />
       <NavigationMenu>
         <NavigationMenuList className="flex justify-evenly text-2xl font-bold">
           {navItems.map((item) => (

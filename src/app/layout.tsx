@@ -2,7 +2,8 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Navbar from "./components/Navbar";
 import AuthProvider from "./context/AuthProvider";
-import { ThemeProvider } from "./components/theme-provider";
+import { ThemeProvider } from "../components/ui/theme-provider";
+import { ModeToggle } from "./components/ModeToggle";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,22 +19,26 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        {/* Place ThemeProvider as close to the root as possible */}
-        <ThemeProvider
+       <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-        >
+        > 
+      <body className={`${inter.className}`}>
+      
           <AuthProvider>
-            <Navbar />
-            <main className="flex justify-center h-screen items-start  min-h-screen w-full bg-white">
+         
+          <Navbar />
+            <main className="flex justify-center items-start min-h-screen w-full">
+            
               {children}
+             
             </main>
           </AuthProvider>
-        </ThemeProvider>
+      
       </body>
+      </ThemeProvider>
     </html>
   );
 }

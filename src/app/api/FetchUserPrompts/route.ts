@@ -1,13 +1,18 @@
 import React from "react";
 
 import { PrismaClient } from "@prisma/client";
+import { useSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
 
 const Prisma=new PrismaClient();
 export async function POST(req: Request) {
-    const { username } = await req.json();
+    console.log('called the userdataprofile')
+    const session = await getServerSession();
+    console.log('the server session is',session);
+    const {username}=await req.json();
 
 
-    const user = await Prisma.user.findUnique({
+    const user = await Prisma.user.findFirst({
         where: { username },
         select: { id: true }, // Only fetch the user ID
       });
